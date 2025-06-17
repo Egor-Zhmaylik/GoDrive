@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'], $_POST['order_id'])) {
 
 $order_id = $_POST['order_id'];
 
-// Получаем заказ
 $stmt = $pdo->prepare("SELECT o.*, c.price FROM orders o 
                        JOIN cars c ON o.car_id = c.id 
                        WHERE o.id = ? AND o.user_id = ?");
@@ -21,13 +20,11 @@ if (!$order || $order['order_type'] !== 'open' || $order['end_time']) {
     exit();
 }
 
-// Завершаем заказ
 $now = new DateTime();
 $start = new DateTime($order['start_time']);
 $diffMinutes = ($now->getTimestamp() - $start->getTimestamp()) / 60;
 
-// Рассчитываем стоимость: цена за минуту * кол-во минут
-$pricePerMinute = $order['price']; // цена в минуту из таблицы cars
+$pricePerMinute = $order['price']; 
 $totalPrice = round($pricePerMinute * $diffMinutes, 2);
 
 $update = $pdo->prepare("UPDATE orders SET end_time = ?, total_price = ? WHERE id = ?");
