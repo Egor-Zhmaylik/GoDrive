@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         inputs.forEach(inp => inp.classList.remove("error-input"));
     };
 
-    // --- Регистрация ---
+    //Регистрация
     const form = document.getElementById("registration-form");
 
     if (form) {
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- Авторизация ---
+    // Авторизация
     const loginForm = document.querySelector("#login-form form");
     const loginPhone = document.getElementById("login-phone");
     const loginPassword = document.getElementById("login-password");
