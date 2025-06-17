@@ -237,7 +237,6 @@ header {
 
 /* Cars секция */
 
-/* === 🌍 СЕКЦИЯ С АВТО НА ГЛАВНОЙ СТРАНИЦЕ === */
 .cars-main {
     background: url('mainphotoes/road_cars.jpg') no-repeat center center/cover;
     min-height: 100vh;
@@ -286,9 +285,7 @@ header {
 
 
 
-/* =============== */
-/* 🚗 СТРАНИЦА cars.php */
-/* =============== */
+/* cars.php */
 .cars-page {
     background: url('mainphotoes/road_cars.jpg') no-repeat center center/cover;
     height: 100vh; /* Фиксированная высота */
@@ -298,7 +295,7 @@ header {
     padding: 40px;
 }
 
-/* Контейнер карточек (по центру) */
+/* Контейнер карточек  */
 .cars-page .car-list-container {
     display: flex;
     align-items: center;
@@ -324,7 +321,7 @@ header {
     padding-right: 10px; /* Чтобы скролл не перекрывал контент */
 }
 
-/* Полоса прокрутки (ТОЛЬКО для cars.php) */
+/* Полоса прокрутки ( для cars.php) */
 .cars-page .car-list::-webkit-scrollbar {
     width: 8px;
 }
@@ -338,9 +335,7 @@ header {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* =============== */
-/* 🎨 ОБЩИЕ СТИЛИ КАРТОЧЕК (не меняем) */
-/* =============== */
+/* ОБЩИЕ СТИЛИ КАРТОЧЕК  */
 .car {
     background-color: #555;
     padding: 20px;
