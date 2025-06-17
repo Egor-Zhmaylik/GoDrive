@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: "&copy; OpenStreetMap contributors"
     }).addTo(map);
 
-    // ======= Координаты зоны Гродно (GeoJSON) =======
     const zoneCoords = [
         [23.81385406040252, 53.721694813883005],
         [23.809046127327406, 53.71048473198701],
@@ -99,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
         [23.81385406040252, 53.721694813883005]
         ];
 
-    // Создание полигона и отображение его на карте
     const latLngZone = zoneCoords.map(p => [p[1], p[0]]);
     const polygon = L.polygon(latLngZone, {
         color: 'purple',
@@ -107,12 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
         fillOpacity: 0.3
     }).addTo(map);
 
-    // Проверка попадания точки в полигон
     function isInsidePolygon(latlng) {
         return leafletPolyContains(polygon, latlng);
     }
 
-    // Простая реализация point-in-polygon
     function leafletPolyContains(polygon, latlng) {
         const x = latlng.lat;
         const y = latlng.lng;
@@ -130,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return inside;
     }
 
-    // Получение случайной точки внутри bounding box полигона
     function getRandomPointInPolygon() {
         const bounds = polygon.getBounds();
         let point;
@@ -144,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return point;
     }
 
-    // Генерация маркеров в зоне
     for (let i = 0; i < 25; i++) {
         const coords = getRandomPointInPolygon();
         const marker = L.marker(coords).addTo(map).bindPopup("Свободный автомобиль");
