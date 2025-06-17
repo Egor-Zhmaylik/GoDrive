@@ -22,7 +22,6 @@
                 attribution: "&copy; OpenStreetMap contributors"
             }).addTo(map);
 
-            // ===== Координаты зоны города Гродно =====
             const zoneCoords = [
                     [23.81385406040252, 53.721694813883005],
                     [23.809046127327406, 53.71048473198701],
@@ -117,7 +116,6 @@
                     ];
 
 
-            // Преобразуем в формат Leaflet
             const latLngZone = zoneCoords.map(p => [p[1], p[0]]);
             const polygon = L.polygon(latLngZone, {
                 color: 'purple',
@@ -159,7 +157,6 @@
                 return point;
             }
 
-            // Генерация 75 случайных меток в пределах зоны
             for (let i = 0; i < 75; i++) {
                 const coords = getRandomPointInPolygon();
                 const marker = L.marker(coords).addTo(map).bindPopup("Свободный автомобиль");
