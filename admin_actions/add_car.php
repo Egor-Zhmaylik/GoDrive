@@ -6,15 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = $_POST['price'];
     $daily_price = $_POST['daily_price'];
 
-    // Проверка и загрузка фото
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
         $photoTmp = $_FILES['photo']['tmp_name'];
-        $photoName = time() . '_' . basename($_FILES['photo']['name']); // уникальное имя
+        $photoName = time() . '_' . basename($_FILES['photo']['name']); 
         $uploadDir = '../carphotoes/';
         $photoPath = $uploadDir . $photoName;
 
         if (move_uploaded_file($photoTmp, $photoPath)) {
-            // Успешная загрузка, сохраняем в БД
             $stmt = $pdo->prepare("INSERT INTO cars (title, image, price, daily_price) VALUES (?, ?, ?, ?)");
             $stmt->execute([$title, $photoName, $price, $daily_price]);
             header("Location: ../admin.php");
