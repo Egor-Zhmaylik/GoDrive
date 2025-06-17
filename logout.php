@@ -1,10 +1,8 @@
 <?php
-// Очищаем сессии или куки
 session_start();
-session_unset(); // Удаляем все переменные сессии
-session_destroy(); // Уничтожаем сессию
+session_unset(); 
+session_destroy(); 
 
-// Перенаправляем на главную страницу
-header("Location: index.php"); // Указываем нужный путь к главной странице
+header("Location: index.php"); 
 exit;
 ?>
