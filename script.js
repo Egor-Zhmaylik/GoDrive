@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginPhone = document.getElementById("login-phone");
     const loginPassword = document.getElementById("login-password");
 
-    // Открытие модального окна входа
     if (loginButton) {
         loginButton.addEventListener("click", function () {
             if (modal && loginForm && registerForm) {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Открытие модального окна регистрации
     if (registerButton) {
         registerButton.addEventListener("click", function () {
             if (modal && loginForm && registerForm) {
@@ -34,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Переключение: показать регистрацию
     if (showRegisterLink) {
         showRegisterLink.addEventListener("click", function () {
             if (loginForm && registerForm) {
@@ -44,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Переключение: показать вход
     if (showLoginLink) {
         showLoginLink.addEventListener("click", function () {
             if (loginForm && registerForm) {
@@ -54,21 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Закрытие модального окна по крестику
     if (closeBtn && modal) {
         closeBtn.addEventListener("click", function () {
             modal.style.display = "none";
         });
     }
 
-    // Закрытие модального окна по клику вне его
     window.addEventListener("click", function (event) {
         if (modal && event.target === modal) {
             modal.style.display = "none";
         }
     });
 
-    // Обработчик кнопки входа в аккаунт
     if (loginBtn && loginPhone && loginPassword) {
         loginBtn.addEventListener("click", function (event) {
             event.preventDefault();
@@ -102,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Модальное окно для входа при попытке действия без авторизации
     function showLoginModal() {
         const loginModal = document.getElementById("login-modal");
         if (loginModal) loginModal.style.display = "block";
@@ -151,18 +143,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-        // Функция проверки авторизации и действия по кнопке "Посмотреть другие варианты"
     function handleCarAction(event) {
-        event.preventDefault(); // Останавливаем стандартное поведение (переход)
+        event.preventDefault(); 
 
         fetch('check_auth.php')
             .then(response => response.json())
             .then(data => {
                 if (data.isAuthenticated) {
-                    // Если пользователь авторизован, переходим на cars.php
                     window.location.href = 'cars.php';
                 } else {
-                    // Если не авторизован, показываем окно входа
                     const modal = document.getElementById("modal");
                     const loginForm = document.getElementById("login-form");
                     const registerForm = document.getElementById("register-form");
@@ -177,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Назначаем обработчики всем кнопкам "Посмотреть другие варианты"
     document.querySelectorAll('.more-btn').forEach(button => {
         button.addEventListener('click', handleCarAction);
     });
