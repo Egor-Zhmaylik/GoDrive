@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost'; // Или IP-адрес сервера
-$dbname = 'godrive_db'; // Имя базы данных
-$username = 'root'; // Имя пользователя MySQL
-$password = ''; // Пароль MySQL
+$host = 'localhost'; 
+$dbname = 'godrive_db'; 
+$username = 'root'; 
+$password = ''; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
