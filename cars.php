@@ -1,8 +1,7 @@
 <?php
 session_start();
-require "config.php"; // Подключаем базу
+require "config.php"; 
 
-// Получаем авто из базы данных
 $query = $pdo->query("SELECT * FROM cars");
 $cars = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
