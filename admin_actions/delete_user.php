@@ -11,7 +11,7 @@ if (!$user || !$user['is_admin']) {
 
 $user_id = (int) ($_POST['user_id'] ?? 0);
 
-if ($user_id !== $_SESSION['user_id']) { // Защита от самоуничтожения
+if ($user_id !== $_SESSION['user_id']) { 
     $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
     $stmt->execute([$user_id]);
 }
