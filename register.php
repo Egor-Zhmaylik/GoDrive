@@ -8,7 +8,6 @@ function isRussian($value) {
     return preg_match("/^[А-Яа-яЁё\s\-]+$/u", $value);
 }
 
-// Проверка данных
 if (!isRussian($_POST['lastname'])) {
     $errors[] = "Фамилия должна содержать только русские буквы.";
 }
@@ -44,7 +43,6 @@ if (!empty($errors)) {
     exit();
 }
 
-// Запись в БД
 $lastname = trim($_POST["lastname"]);
 $firstname = trim($_POST["firstname"]);
 $middlename = trim($_POST["middlename"]);
