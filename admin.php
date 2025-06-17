@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-// Проверка на админа
 $stmt = $pdo->prepare("SELECT is_admin FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id'] ?? 0]);
 $user = $stmt->fetch();
@@ -11,7 +10,6 @@ if (!$user || !$user['is_admin']) {
     die("Доступ запрещен");
 }
 
-// Получаем данные
 $cars = $pdo->query("SELECT * FROM cars")->fetchAll();
 $users = $pdo->query("SELECT id, CONCAT(lastname, ' ', firstname, ' ', middlename) AS full_name, email FROM users")->fetchAll();
 $stmt = $pdo->query("
@@ -229,7 +227,6 @@ $orders = $stmt->fetchAll();
 
         });
 
-        // Вкладки
         $('.tab-btn').on('click', function () {
             $('.tab-btn').removeClass('active');
             $(this).addClass('active');
