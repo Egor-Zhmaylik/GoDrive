@@ -189,16 +189,12 @@ if (!$car) {
 
     tariffButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем выделение со всех кнопок
             tariffButtons.forEach(btn => btn.classList.remove('selected'));
-            // Добавляем выделение на текущую
             button.classList.add('selected');
 
-            // Устанавливаем значение скрытого input
             const selectedType = button.getAttribute('data-type');
             orderTypeInput.value = selectedType;
 
-            // Скрываем/показываем доп. поля
             scheduledFields.classList.add('hidden');
             dailyFields.classList.add('hidden');
 
@@ -212,7 +208,7 @@ if (!$car) {
     document.getElementById('order-form').addEventListener('submit', function (e) {
         const selectedType = orderTypeInput.value;
         const errorDiv = document.getElementById('error-message');
-        errorDiv.textContent = ''; // очищаем прошлые ошибки
+        errorDiv.textContent = ''; 
 
         if (selectedType === 'scheduled') {
             const start = document.querySelector('input[name="start_time_sch"]').value;
