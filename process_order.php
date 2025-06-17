@@ -74,8 +74,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'godrive.site@gmail.com';           // <-- Gmail
-    $mail->Password = 'eezg cfzm qywq srkd';             // <-- App Password
+    $mail->Username = 'godrive.site@gmail.com';           
+    $mail->Password = 'eezg cfzm qywq srkd';             
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
