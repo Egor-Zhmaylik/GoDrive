@@ -7,7 +7,6 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 
-// Получаем данные пользователя из БД
 $stmt = $pdo->prepare("SELECT lastname, firstname, middlename, phone, passport_number, driver_license, email FROM users WHERE id = ?");
 $stmt->execute([$_SESSION["user_id"]]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -54,7 +53,6 @@ if (!$user) {
 
     <a href="logout.php" class="btn">Выйти</a>
     <?php
-        // Получаем все заказы пользователя
         $stmt = $pdo->prepare("SELECT o.*, c.title, c.image FROM orders o 
                             JOIN cars c ON o.car_id = c.id 
                             WHERE o.user_id = ? ORDER BY o.created_at DESC");
@@ -109,7 +107,6 @@ if (!$user) {
                             <button type="button" class="custom-btn-complete" onclick="openCustomConfirmModal()">Завершить заказ</button>
                         </form>
 
-                        <!-- Кастомное модальное окно подтверждения -->
                         <div id="custom-confirm-modal" class="custom-modal-overlay" style="display: none;">
                             <div class="custom-modal-box">
                                 <h3>Подтверждение</h3>
