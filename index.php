@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php'; // Подключаем базу данных
+require 'config.php'; 
 
 $isAuthenticated = false;
 $isAdmin = false;
@@ -8,7 +8,7 @@ $isAdmin = false;
 if (isset($_SESSION['user_id'])) {
     $isAuthenticated = true;
 
-    // Проверка, является ли пользователь админом
+    
     $stmt = $pdo->prepare("SELECT is_admin FROM users WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
     }
 }
 
-// Получаем 7 случайных авто из БД
+
 $stmt = $pdo->query("SELECT * FROM cars ORDER BY RAND() LIMIT 8");
 $cars = $stmt->fetchAll();
 ?>
@@ -141,7 +141,6 @@ $cars = $stmt->fetchAll();
         </div>
     </section>
 
-    <!-- Подключение Leaflet.js -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="map.js"></script>
@@ -151,7 +150,6 @@ $cars = $stmt->fetchAll();
     </footer>
 
     <script>
-        // Плавная прокрутка к секциям
         document.querySelectorAll('nav ul li a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -167,7 +165,6 @@ $cars = $stmt->fetchAll();
         });
     </script>
 
-    <!-- Модальное окно -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -223,7 +220,6 @@ $cars = $stmt->fetchAll();
         if (isAuthenticated) {
             window.location.href = 'order.php?id=' + carId;
         } else {
-            // Открыть модальное окно авторизации
             const modal = document.getElementById('modal');
             modal.style.display = 'flex';
         }
