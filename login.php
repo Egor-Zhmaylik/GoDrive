@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-// Включаем отображение ошибок
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
